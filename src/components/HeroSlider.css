@@ -1,0 +1,186 @@
+/* File: src/components/HeroSlider.css */
+@import "tailwindcss";
+
+.hero-slider {
+  background-color: #f2f6f7;
+  position: relative;
+  overflow: hidden;
+}
+.hero-container {
+  min-height: 700px; /* hoặc 700px tùy ý */
+}
+
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 750px;
+  padding: 2rem 0;
+}
+
+/* Các style cho nội dung và ảnh bên trong slide */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 50%;
+  padding-left: 0.5rem;
+}
+
+.hero-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-product-image {
+  max-width: 95%;
+  height: auto;
+  display: block;
+}
+
+/* --- Text styles --- */
+.hero-subtitle { font-size: 1.3rem; font-weight: 700; color: #ffb400; margin: 0; }
+.hero-title { font-size: 3.5rem; font-weight: 500; line-height: 1.1; color: #212529; margin: 0.5rem 0 1rem 0; margin-right: 3rem}
+.hero-description { font-size: 1rem; color: #4b5563; margin-bottom: 2rem; line-height: 1.6; margin-right: 7rem }
+.hero-button { display: inline-block; background-color: #ffb400; color: white; font-weight: bold; padding: 18px 35px; text-decoration: none; border: 4px; transition: background-color 0.2s ease; } */
+.hero-button:hover { background-color: white; }
+
+
+/* --- NÚT ĐIỀU HƯỚNG --- */
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+  background-color: #f2f6f7;
+  border: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+}
+
+/* Đặt vị trí ban đầu (trượt ra ngoài) */
+.swiper-button-prev-custom {
+  left: 30px;
+  transform: translate(-120%, -50%); /* Trượt ra ngoài bên trái */
+}
+
+.swiper-button-next-custom {
+  right: 30px;
+  transform: translate(120%, -50%); /* Trượt ra ngoài bên phải */
+}
+
+/* Khi hover slider thì hiện nút (trượt vào trong + fade in) */
+.hero-slider:hover .swiper-button-prev-custom {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(50%, -50%); /* Trượt vào từ trái */
+}
+
+.hero-slider:hover .swiper-button-next-custom {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%); /* Trượt vào từ phải */
+}
+
+/* Hover trực tiếp vào nút */
+.swiper-button-prev-custom:hover,
+.swiper-button-next-custom:hover {
+  background-color: #fbbf24;
+  transform: scale(1.1) translateY(-50%);
+}
+
+/* Swiper icons */
+.swiper-button-prev-custom::after,
+.swiper-button-next-custom::after {
+  font-family: 'swiper-icons';
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.swiper-button-prev-custom::after { content: 'prev'; }
+.swiper-button-next-custom::after { content: 'next'; }
+
+.swiper-button-prev-custom:hover::after,
+.swiper-button-next-custom:hover::after {
+  color: #fff;
+}
+
+
+/* --- PAGINATION --- */
+.swiper-pagination {
+  position: absolute;
+  bottom: 20px !important;
+  width: 100%;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #d1d5db;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ffb400;
+}
+
+
+/* --- ANIMATION --- */
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-animated { opacity: 0; }
+
+.swiper-slide-active .slide-animated {
+  animation-name: slideInFromBottom;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.delay-1 { animation-delay: 0.4s; }
+.delay-2 { animation-delay: 0.8s; }
+.delay-3 { animation-delay: 1.2s; }
+.delay-4 { animation-delay: 1.8s; }
+
+/* custom animation */
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(40px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(40px) rotate(-360deg);
+  }
+}
+
+.animate-orbit {
+  animation: orbit 10s linear infinite;
+}

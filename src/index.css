@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+
+.swiper-slide {
+  min-height: 0 !important;
+}
+
+
