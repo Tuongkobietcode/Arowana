@@ -29,9 +29,9 @@ const ScrollToTopButton = () => {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 p-3 bg-[#f2f6f7] hover:bg-[#ffb400] text-black transition-all duration-300 transform rotate-45"
+          className="fixed bottom-18 right-12 p-3 shadow-2xl bg-[#f2f6f7] hover:bg-[#ffb400] text-black transition-all duration-300 transform rotate-45"
         >
-          <ChevronUp className="w-5 h-5 transform -rotate-45" />
+          <ChevronUp className="w-4 h-4 transform -rotate-45" />
         </button>
       )}
     </>

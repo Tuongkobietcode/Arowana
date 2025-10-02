@@ -5,9 +5,9 @@ import logo from '../../assets/images/logo_150x@2x.png';
 
 
 const navLinks = [
-  { name: 'Home', href: '#', hasDropdown: true },
-  { name: 'Shop', href: '#', hasDropdown: true },
-  { name: 'Product', href: '#', hasDropdown: true },
+  { name: 'Home', href: '#', hasDropdown: "simple" },
+  { name: 'Shop', href: '#', hasDropdown: "mega" },
+  { name: 'Product', href: '#', hasDropdown: "simple" },
   { name: 'News', href: '#' },
   { name: 'About Us', href: '#' },
   { name: 'Contact', href: '#' },
@@ -28,10 +28,73 @@ const NavBar = () => {
                 <span>{link.name}</span>
                 {link.hasDropdown && <span className="-ml-[3px]">+</span>}
               </a>
+           
+        {/* Dropdown: Simple */}
+              {link.hasDropdown === "simple" && (
+                <div className="absolute left-0 mt-2 w-40 bg-white text-black rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                  <ul className="py-2">
+                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                      {link.name} 1
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                      {link.name} 2
+                    </li>
+                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                      {link.name} 3
+                    </li>
+                  </ul>
+                </div>
+              )}
+        {/* Dropdown: Mega Menu (Shop) */}
+              {link.hasDropdown === "mega" && (
+                <div className="absolute left-0 mt-2 w-[600px] bg-white text-black rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-6 grid grid-cols-3 gap-6 z-50">
+                  <div>
+                    <h4 className="font-bold mb-3">Category 1</h4>
+                    <ul className="space-y-2 text-sm">
+                      <li className="hover:text-[#ffb400] cursor-pointer">
+                        Item 1
+                      </li>
+                      <li className="hover:text-[#ffb400] cursor-pointer">
+                        Item 2
+                      </li>
+                      <li className="hover:text-[#ffb400] cursor-pointer">
+                        Item 3
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-bold mb-3">Category 2</h4>
+                    <ul className="space-y-2 text-sm">
+                      <li className="hover:text-[#ffb400] cursor-pointer">
+                        Item 4
+                      </li>
+                      <li className="hover:text-[#ffb400] cursor-pointer">
+                        Item 5
+                      </li>
+                      <li className="hover:text-[#ffb400] cursor-pointer">
+                        Item 6
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-bold mb-3">Category 3</h4>
+                    <ul className="space-y-2 text-sm">
+                      <li className="hover:text-[#ffb400] cursor-pointer">
+                        Item 7
+                      </li>
+                      <li className="hover:text-[#ffb400] cursor-pointer">
+                        Item 8
+                      </li>
+                      <li className="hover:text-[#ffb400] cursor-pointer">
+                        Item 9
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
             </li>
           ))}
-        </ul>
-
+        </ul> 
         {/* Right Icons */}
         <div className="navbar-icons">
           <button>
